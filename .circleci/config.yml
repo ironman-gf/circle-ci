@@ -14,7 +14,7 @@ jobs:
           command: mvn clean install
 
       - store_artifacts:
-          path: target/*.jar
+          path: target/
 
   build_docker_image:
     docker:
