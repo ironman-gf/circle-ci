@@ -18,26 +18,17 @@ jobs:
 
   build_docker_image:
     docker:
-      - image: docker:20.10.2
-    environment:
-      name: docker
+      - image: docker:20.10.14
     working_directory: /app
 
     steps:
+      - setup_remote_docker:
+        version: 20.10.14
       - checkout
-      - restore_cache:
-          keys:
-            - v1-docker-{{ .Branch }}-{{ .Revision }}
-            - v1-docker-{{ .Branch }}
-            - v1-docker
       - run:
           name: Build Docker Image
           command: |
             docker build -t my-java-image .
-      - save_cache:
-          key: v1-docker-{{ .Branch }}-{{ .Revision }}
-          paths:
-            - /root/.docker
       - store_artifacts:
           path: my-java-app
       # - run:
