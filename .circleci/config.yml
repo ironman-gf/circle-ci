@@ -22,15 +22,7 @@ jobs:
     working_directory: /app
 
     steps:
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "pom.xml" }}
-            - v1-dependencies-
-
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: v1-dependencies-{{ checksum "pom.xml" }}
+      - checkout
 
       - run:
           name: Build Docker Image
@@ -53,3 +45,5 @@ workflows:
     jobs:
       - build
       - build_docker_image
+        requires:
+          - build
