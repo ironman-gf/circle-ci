@@ -56,3 +56,8 @@ jobs:
       #       gcloud --quiet container clusters get-credentials $GCP_CLUSTER_NAME
       #       kubectl config use-context gke_$GCP_PROJECT_ID_$GCP_COMPUTE_ZONE_$GCP_CLUSTER_NAME
       #       kubectl set image deployment/$GCP_DEPLOYMENT_NAME $GCP_CONTAINER_NAME=$DOCKER_USERNAME/my-java-image:$CIRCLE_SHA1
+workflows:
+  mvn-docker-build-workflow:
+    jobs:
+      - build
+      - build_docker_image
