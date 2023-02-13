@@ -22,15 +22,10 @@ jobs:
     working_directory: /app
 
     steps:
-      - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "pom.xml" }}
             - v1-dependencies-
-
-      - run:
-          name: Install dependencies
-          command: mvn clean install -DskipTests
 
       - save_cache:
           paths:
@@ -41,9 +36,6 @@ jobs:
           name: Build Docker Image
           command: |
             docker build -t my-java-image .
-            echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-            docker tag my-java-image "$DOCKER_USERNAME/my-java-image:$CIRCLE_SHA1"
-            docker push "$DOCKER_USERNAME/my-java-image:$CIRCLE_SHA1"
 
       # - run:
       #     name: Deploy to Google Cloud Platform
