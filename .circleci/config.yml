@@ -17,9 +17,9 @@ jobs:
           path: target/*.jar
 
   build_docker_image:
-    docker:
-      - image: docker:20.10.2
     working_directory: /app
+    environment:
+      name: docker
 
     steps:
       - checkout
