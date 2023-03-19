@@ -1,5 +1,6 @@
 version: 2.1
-
+orbs:
+  gcp-gcr: circleci/gcp-gcr@0.15.1
 jobs:
   build:
     docker:
@@ -46,6 +47,12 @@ jobs:
       #       gcloud --quiet container clusters get-credentials $GCP_CLUSTER_NAME
       #       kubectl config use-context gke_$GCP_PROJECT_ID_$GCP_COMPUTE_ZONE_$GCP_CLUSTER_NAME
       #       kubectl set image deployment/$GCP_DEPLOYMENT_NAME $GCP_CONTAINER_NAME=$DOCKER_USERNAME/my-java-image:$CIRCLE_SHA1
+  gcr-auth:
+    docker:
+      # replace with your preferred image
+      - image: cimg/base:stable
+    steps:
+      - gcp-gcr/gcr-auth
 workflows:
   mvn-docker-build-workflow:
     jobs:
@@ -53,3 +60,4 @@ workflows:
       - build_docker_image:
           requires:
             - build
+      - gcr-auth
