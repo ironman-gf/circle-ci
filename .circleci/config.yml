@@ -50,7 +50,7 @@ jobs:
   gcr-push:
     docker:
       # replace with your preferred image
-      - image: cimg/base:stable
+      - image: docker:20.10.14
     steps:
       - gcp-gcr/push-image:
           registry-url: asia-docker.pkg.dev/sej-store-cloud-dev/ane-1-sc-art-reg-dev-24
