@@ -48,9 +48,7 @@ jobs:
       #       kubectl config use-context gke_$GCP_PROJECT_ID_$GCP_COMPUTE_ZONE_$GCP_CLUSTER_NAME
       #       kubectl set image deployment/$GCP_DEPLOYMENT_NAME $GCP_CONTAINER_NAME=$DOCKER_USERNAME/my-java-image:$CIRCLE_SHA1
   gcr-push:
-    docker:
-      # replace with your preferred image
-      - image: docker:20.10.14
+    executor: gcp-gcr/default
     steps:
       - gcp-gcr/gcr-auth
       - gcp-gcr/push-image:
