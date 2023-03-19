@@ -63,4 +63,6 @@ workflows:
       - build_docker_image:
           requires:
             - build
-      - gcr-push
+      - gcr-push:
+          requires:
+              - build_docker_image
