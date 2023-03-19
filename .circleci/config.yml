@@ -47,16 +47,15 @@ jobs:
       #       gcloud --quiet container clusters get-credentials $GCP_CLUSTER_NAME
       #       kubectl config use-context gke_$GCP_PROJECT_ID_$GCP_COMPUTE_ZONE_$GCP_CLUSTER_NAME
       #       kubectl set image deployment/$GCP_DEPLOYMENT_NAME $GCP_CONTAINER_NAME=$DOCKER_USERNAME/my-java-image:$CIRCLE_SHA1
-  gcr-auth:
+  gcr-push:
     docker:
       # replace with your preferred image
       - image: cimg/base:stable
     steps:
-      - gcp-gcr/gcr-auth:
+      - gcp-gcr/push-image:
           registry-url: asia-docker.pkg.dev/sej-store-cloud-dev/ane-1-sc-art-reg-dev-24 
-          google-project-id: sej-store-cloud-dev 
-          google-compute-region: asia 
-          gcloud-service-key: d47f5b2f5322f6c2cc6e92c17fb55c68bdcad97f 
+          tag: latest 
+          image: my-java-image 
 workflows:
   mvn-docker-build-workflow:
     jobs:
@@ -64,4 +63,4 @@ workflows:
       - build_docker_image:
           requires:
             - build
-      - gcr-auth
+      - gcr-push
