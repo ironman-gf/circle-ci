@@ -52,7 +52,11 @@ jobs:
       # replace with your preferred image
       - image: cimg/base:stable
     steps:
-      - gcp-gcr/gcr-auth
+      - gcp-gcr/gcr-auth:
+          registry-url: asia-docker.pkg.dev/sej-store-cloud-dev/ane-1-sc-art-reg-dev-24 
+          google-project-id: sej-store-cloud-dev 
+          google-compute-region: asia 
+          gcloud-service-key: d47f5b2f5322f6c2cc6e92c17fb55c68bdcad97f 
 workflows:
   mvn-docker-build-workflow:
     jobs:
