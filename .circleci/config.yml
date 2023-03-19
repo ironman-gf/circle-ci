@@ -53,9 +53,10 @@ jobs:
       - image: cimg/base:stable
     steps:
       - gcp-gcr/push-image:
-          registry-url: asia-docker.pkg.dev/sej-store-cloud-dev/ane-1-sc-art-reg-dev-24 
-          tag: latest 
-          image: my-java-image 
+          registry-url: asia-docker.pkg.dev/sej-store-cloud-dev/ane-1-sc-art-reg-dev-24
+          tag: latest
+          image: my-java-image
+          google-project-id: ORB_ENV_PROJECT_ID
 workflows:
   mvn-docker-build-workflow:
     jobs:
