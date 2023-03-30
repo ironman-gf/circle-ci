@@ -33,9 +33,9 @@ jobs:
       - run:
           name: Build Docker Image
           command: |
-            docker build -t my-java-image .
+            docker build -t asia-docker.pkg.dev/sej-store-cloud-dev/ane-1-sc-art-reg-dev-24/my-java-image .
       - store_artifacts:
-          path: /app 
+          path: . 
       # - run:
       #     name: Deploy to Google Cloud Platform
       #     command: |
