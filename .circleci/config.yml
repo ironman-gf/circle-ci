@@ -35,7 +35,7 @@ jobs:
           command: |
             docker build -t my-java-image .
       - store_artifacts:
-          path: my-java-app
+          path: /app 
       # - run:
       #     name: Deploy to Google Cloud Platform
       #     command: |
