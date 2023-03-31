@@ -54,10 +54,10 @@ jobs:
       - gcp-gcr/gcr-auth
       - gcp-gcr/build-image:
           image: my-java
-          registry-url: asia.gcr.io
+          registry-url: asia-docker.pkg.dev
       - gcp-gcr/push-image:
           image: my-java
-          registry-url: asia.gcr.io
+          registry-url: asia-docker.pkg.dev
 workflows:
   mvn-docker-build-workflow:
     jobs:
