@@ -1,2 +1,3 @@
-# Use an existing Java runtime image as the base image
-FROM scratch
+FROM ubuntu
+
+RUN echo "Hello, Docker!"
