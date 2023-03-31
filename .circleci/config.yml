@@ -54,10 +54,10 @@ jobs:
       - gcp-gcr/gcr-auth
       - gcp-gcr/build-image:
           image: my-java
-          registry-url: asia-docker.pkg.dev/sej-store-cloud-dev/ane-1-sc-art-reg-dev-24
+          registry-url: asia.gcr.io
       - gcp-gcr/push-image:
           image: my-java
-          registry-url: asia-docker.pkg.dev/sej-store-cloud-dev/ane-1-sc-art-reg-dev-24
+          registry-url: asia.gcr.io
 workflows:
   mvn-docker-build-workflow:
     jobs:
